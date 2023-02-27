@@ -42,6 +42,7 @@ end
 
 local use = require("packer").use
 local user_settings_file = require("user_settings")
+require("user_settings")
 
 return require("packer").startup({
   function()
@@ -61,14 +62,6 @@ return require("packer").startup({
       "antoinemadec/FixCursorHold.nvim",
       event = { "BufRead", "BufNewFile" },
       disable = disable_plugins.fix_cursor_hold,
-    })
-
-    -- gives you a useful undotree (and history)
-    use({
-      "mbbill/undotree",
-      config = function()
-        require("plugins/undotree")
-      end,
     })
 
     -- This plugin is needed for many plugins(like telescope) so this is one of
@@ -107,20 +100,10 @@ return require("packer").startup({
       disable = disable_plugins.nvim_enfocado,
     })
 
-    -- custom colorscheme and config call
-    use({
-      "catppuccin/nvim",
-      as = "catppuccin",
-      config = function()
-        require("plugins/catppuccin")
-      end,
-      disable = disable_plugins.catppuccin,
-    })
-
     -- TrueZen.nvim is a Neovim plugin that aims to provide a cleaner and less cluttered interface
     -- when toggled in either of it has three different modes (Ataraxis, Minimalist and Focus).
     use({
-      "Pocco81/TrueZen.nvim",
+      "Pocco81/true-zen.nvim",
       cmd = {
         "TZFocus",
         "TZAtaraxis",
@@ -219,7 +202,7 @@ return require("packer").startup({
 
     -- Colorizer (for highlighting color codes).
     use({
-      "norcalli/nvim-colorizer.lua",
+      "NvChad/nvim-colorizer.lua",
       event = { "BufRead", "BufNewFile" },
       config = function()
         require("plugins/colorizer")
@@ -260,23 +243,29 @@ return require("packer").startup({
 
     -- LSP, LSP installer and tab completion.
     use({
-      "williamboman/nvim-lsp-installer",
-      event = { "BufRead", "BufNewFile" },
-      cmd = {
-        "LspInstall",
-        "LspInstallInfo",
-        "LspPrintInstalled",
-        "LspRestart",
-        "LspStart",
-        "LspStop",
-        "LspUninstall",
-        "LspUninstallAll",
-      },
-      disable = disable_plugins.nvim_lsp_installer,
+      "williamboman/mason.nvim",
+      config = function()
+        require("mason").setup()
+      end,
+    })
+    use({
+      "williamboman/mason-lspconfig.nvim",
+      after = "mason.nvim",
+      config = function()
+        require("mason-lspconfig").setup()
+      end,
+    })
+    use({
+      "neovim/nvim-lspconfig",
+      after = "mason-lspconfig.nvim",
+      config = function()
+        require("plugins.lsp.lsp")
+      end,
+      disable = disable_plugins.nvim_lspconfig,
     })
     use({
       "jose-elias-alvarez/null-ls.nvim",
-      after = "nvim-lsp-installer",
+      after = "nvim-lspconfig",
       config = function()
         local config = require("user_settings")
         if config.null_ls ~= nil then
@@ -284,14 +273,6 @@ return require("packer").startup({
         end
       end,
       disable = disable_plugins.null_ls,
-    })
-    use({
-      "neovim/nvim-lspconfig",
-      after = "null-ls.nvim",
-      config = function()
-        require("plugins.lsp.lsp")
-      end,
-      disable = disable_plugins.nvim_lspconfig,
     })
 
     use({
@@ -365,9 +346,7 @@ return require("packer").startup({
     use({
       "ray-x/lsp_signature.nvim",
       event = "InsertEnter",
-      config = function()
-        require("lsp_signature").setup()
-      end,
+      -- Config of this plugin is in plugins/lsp/lsp.lua
       disable = disable_plugins.lsp_signature,
     })
 
@@ -381,6 +360,8 @@ return require("packer").startup({
     use({
       "Pocco81/dap-buddy.nvim",
       after = "nvim-dap",
+      branch = "dev",
+      commit = "3679132",
       config = function()
         require("plugins/dap")
       end,
@@ -399,7 +380,7 @@ return require("packer").startup({
     use({
       "akinsho/toggleterm.nvim",
       keys = "<C-t>",
-      cmd = "ToggleTerm",
+      module = { "toggleterm", "toggleterm.terminal" },
       config = function()
         require("plugins/toggleterm")
       end,
@@ -572,7 +553,7 @@ return require("packer").startup({
       if type(plugin) == "string" then
         use({ plugin })
       else
-        use({ table.unpack(plugin) })
+        use({ unpack(plugin) })
       end
     end
 

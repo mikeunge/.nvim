@@ -95,7 +95,7 @@ if os == "Windows_NT" then
 else
   plugins_count = fn.len(fn.globpath("~/.local/share/nvim/site/pack/packer/start", "*", 0, 1))
 end
-dashboard.section.footer.val = "CodeArt Loaded " .. plugins_count .. " plugins!  "
+dashboard.section.footer.val = "Successfully Loaded " .. plugins_count .. " plugins!  "
 dashboard.section.footer.opts.hl = "AlphaFooter"
 
 alpha.setup(dashboard.config)

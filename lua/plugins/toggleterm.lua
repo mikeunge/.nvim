@@ -12,11 +12,6 @@ local toggleterm_config = {
   persist_size = true,
   direction = "horizontal",
   close_on_exit = true, -- close the terminal window when the process exits
-  highlights = {
-    Normal = {
-      guibg = "Normal",
-    },
-  },
   float_opts = {
     border = "curved",
     width = 120,
@@ -25,36 +20,54 @@ local toggleterm_config = {
   },
 }
 
-local Terminal = require("toggleterm.terminal").Terminal
+local exec = vim.fn.executable
 
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
-function _LAZYGIT_TOGGLE()
-  lazygit:toggle()
+if exec("lazygit") == 1 then
+  function _G.LAZYGIT_TOGGLE()
+    local Terminal = require("toggleterm.terminal").Terminal
+    local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
+    lazygit:toggle()
+  end
 end
 
-local node = Terminal:new({ cmd = "node", hidden = true, direction = "float" })
-function _NODE_TOGGLE()
-  node:toggle()
+if exec("node") == 1 then
+  function _G.NODE_TOGGLE()
+    local Terminal = require("toggleterm.terminal").Terminal
+    local node = Terminal:new({ cmd = "node", hidden = true, direction = "float" })
+    node:toggle()
+  end
 end
 
-local ncdu = Terminal:new({ cmd = "ncdu", hidden = true, direction = "float" })
-function _NCDU_TOGGLE()
-  ncdu:toggle()
+if exec("ncdu") == 1 then
+  function _G.NCDU_TOGGLE()
+    local Terminal = require("toggleterm.terminal").Terminal
+    local ncdu = Terminal:new({ cmd = "ncdu", hidden = true, direction = "float" })
+    ncdu:toggle()
+  end
 end
 
-local htop = Terminal:new({ cmd = "htop", hidden = true, direction = "float" })
-function _HTOP_TOGGLE()
-  htop:toggle()
+if exec("htop") == 1 then
+  function _G.HTOP_TOGGLE()
+    local Terminal = require("toggleterm.terminal").Terminal
+    local htop = Terminal:new({ cmd = "htop", hidden = true, direction = "float" })
+    htop:toggle()
+  end
 end
 
-local python = Terminal:new({ cmd = "python", hidden = true, direction = "float" })
-function _PYTHON_TOGGLE()
-  python:toggle()
+if exec("python") == 1 then
+  function _G.PYTHON_TOGGLE()
+    local Terminal = require("toggleterm.terminal").Terminal
+    local python = Terminal:new({ cmd = "python", hidden = true, direction = "float" })
+    python:toggle()
+  end
 end
 
-local ranger = Terminal:new({ cmd = "ranger", hidden = true, direction = "float" })
-function _RANGER_TOGGLE()
-  ranger:toggle()
+if exec("ranger") == 1 then
+  function _G.RANGER_TOGGLE()
+    local Terminal = require("toggleterm.terminal").Terminal
+    local ranger = Terminal:new({ cmd = "ranger", hidden = true, direction = "float" })
+    ranger:toggle()
+  end
 end
 
 local config = require("user_settings")

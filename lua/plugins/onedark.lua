@@ -5,7 +5,7 @@ end
 
 local onedark_config = {
   -- Main options --
-  style = "dark", -- 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'
+  style = "deep", -- 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'
   toggle_style_key = "<leader>co", -- Default keybinding to toggle
   term_colors = true,
   code_style = {
