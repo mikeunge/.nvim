@@ -2,5 +2,5 @@
 
 > Welcome to my neovim config
 
-As a starter I used 💤 LazyVim and tweaked it to my liking.
-Checkout the `lua/plugin/` directory for my custom config(s).
+As a starter I used [💤 LazyVim](https://github.com/LazyVim/LazyVim) and tweaked it to my liking.
+Checkout the `./lua/plugins/` directory for my custom config(s).
