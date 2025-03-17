@@ -22,7 +22,7 @@ return {
         "jsonls",
         "marksman",
         "phpactor",
-        "tsserver",
+        "ts_ls",
         "volar",
       },
     },
