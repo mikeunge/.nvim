@@ -5,11 +5,22 @@ return {
   ft = "markdown",
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {
-    detect_cwd = true,
     workspaces = {
-      { name = "notes", path = vim.fn.expand("~") .. "/Documents/vaults/notes" },
-      { name = "personal", path = vim.fn.expand("~") .. "/Documents/vaults/personal" },
-      { name = "work", path = vim.fn.expand("~") .. "/Documents/vaults/work" },
+      {
+        name = "notes",
+        path = "~/Documents/vaults/notes",
+        strict = true,
+      },
+      {
+        name = "personal",
+        path = "~/Documents/vaults/personal",
+        strict = true,
+      },
+      {
+        name = "work",
+        path = "~/Documents/vaults/work",
+        strict = true,
+      },
     },
     completion = { nvim_cmp = false },
   },
