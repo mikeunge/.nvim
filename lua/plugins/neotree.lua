@@ -5,14 +5,14 @@ return {
     {
       "<leader>fe",
       function()
-        require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root(), position = "right" })
+        require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root(), position = "left" })
       end,
       desc = "Explorer NeoTree (Root Dir)",
     },
     {
       "<leader>fE",
       function()
-        require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd(), position = "right" })
+        require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd(), position = "left" })
       end,
       desc = "Explorer NeoTree (cwd)",
     },
@@ -21,14 +21,14 @@ return {
     {
       "<leader>ge",
       function()
-        require("neo-tree.command").execute({ source = "git_status", toggle = true, position = "right" })
+        require("neo-tree.command").execute({ source = "git_status", toggle = true, position = "left" })
       end,
       desc = "Git Explorer",
     },
     {
       "<leader>be",
       function()
-        require("neo-tree.command").execute({ source = "buffers", toggle = true, position = "right" })
+        require("neo-tree.command").execute({ source = "buffers", toggle = true, position = "left" })
       end,
       desc = "Buffer Explorer",
     },
