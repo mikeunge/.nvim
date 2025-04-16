@@ -28,7 +28,7 @@ return {
     { "<leader>on", "<cmd>ObsidianNew<cr>", desc = "New Obsidian note", mode = "n" },
     { "<leader>oo", "<cmd>ObsidianSearch<cr>", desc = "Search Obsidian notes", mode = "n" },
     { "<leader>os", "<cmd>ObsidianQuickSwitch<cr>", desc = "Quick Switch", mode = "n" },
-    { "<leader>ob", "<cmd>ObsidianBacklinks<cr>", desc = "Backlinks", mode = "n" },
+    { "<leader>ob", "<cmd>ObsidianBacklinks<cr>", desc = "Backlinks", mode = "v" },
     -- { "<leader>ot", "<cmd>ObsidianFollowLink<cr>", desc = "Follow Link", mode = "n" },
     { "<leader>op", "<cmd>ObsidianPasteImg<cr>", desc = "Paste Image", mode = "n" },
     { "<leader>od", "<cmd>ObsidianToday<CR>", desc = "Open today's note" },
